@@ -1,0 +1,157 @@
+.img-circle{
+	max-height: 40px;
+	margin: 5px 0px 5px 0px;
+ 
+}
+.img-rounded{
+
+	max-width: 100%;
+}
+span > a{
+	color: #eee; 
+}
+
+.navbar {
+    background-color: #333;
+    border-radius: 0px;
+    color: #eee;
+    border-bottom: 1px solid #5cb85c;
+}
+	.navbar a{
+		color: #eee;
+	}
+	.navbar-btn{
+		margin-right: 12px;
+	}
+	.navbar-brand:hover,
+	.navbar-brand:focus{
+		color:#5cb85c;
+	}
+	.dropdown-toggle{
+		color:#eee;
+	}
+	.navbar-toggle .icon-bar {
+	    background-color: #fff;
+	}
+	.dropdown-menu{
+		background-color: #333;
+		color:#eee;
+		}
+		.navbar-nav > .dropdown > a:hover,
+		.navbar-nav > .dropdown > a:focus{
+			background-color: #333;
+			color:#5cb85c;
+		}
+		.navbar-nav .open .dropdown-menu > li > a {
+			background-color: #333;
+		    color: #eee;
+		}
+		.navbar-nav .open .dropdown-menu > li > a:hover,
+		.navbar-nav .open .dropdown-menu > li > a:focus {
+		    color: #5cb85c;
+		    background-color: #333;
+		}
+
+
+.comment{
+	border: 1px #EEE solid;
+	border-radius: 6px;
+}
+
+.form-group .form-control{
+	max-width: 450px;
+}
+
+.form-short .form-control{
+	max-width: 250px;
+}
+
+form #avatar{
+	max-width: 120px;
+}
+
+input[type="file"] {
+     display: inline;
+}
+
+
+.que{
+	border: 1px #EEE solid;
+	border-radius: 6px;
+	padding:5px 10px 5px 10px; 
+	min-height: 70px;
+	margin-bottom: 5px;
+	background-color: #EEE;
+}
+	.que .user{
+				margin-right: 15px;
+			    width: 60px;
+			    height: 60px;	
+
+	}
+.tags{
+	font-size: 15px;
+}
+.question{
+	border: 1px #EEE solid;
+	border-radius: 6px;
+}
+	.question-header{
+		padding:5px 10px 5px 10px; 
+		background-color: #EEE;
+		min-height: 90px;
+	}
+	a.question-title {
+		font-size: 20px;
+	}
+		.question-header a.user{
+			margin-right: 15px;
+		    width: 80px;
+		    height: 80px;
+		}
+		.question-meta{
+			font-size: 12px;
+			color: #777;
+		}
+	.question-body{
+		padding: 10px;
+		clear: both;
+	}	
+
+
+.fleft{
+	float: left; 
+}
+
+.comment{
+	border: 1px #EEE solid;
+	border-radius: 6px;
+	padding:5px 10px 5px 10px;
+	margin-bottom: 15px;
+	
+}
+	.comment-body{
+		margin-left: 75px;
+		font-size: 15px;
+		
+	} 
+		.comment .user{
+		    width: 60px;
+		    height: 60px;
+		}	
+		.comment-meta{
+			font-size: 12px;
+			color: #777;
+		}
+
+
+footer {
+	margin-top: 50px;
+    height: 20px;
+	border-top: 1px solid #5cb85c;
+    background-color: #333;
+}
+footer .glyphicon-heart{
+
+	color: #A94442;
+}

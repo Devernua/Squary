@@ -1,0 +1,104 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+	{% include "polls/head.html" %}
+	<body>
+		{% include "polls/hut.html" %}
+		
+		<div class="container" role="main">
+
+			<div class="page-header">
+				<h2>Question</h2>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12 col-sm-8">
+
+					<div class="question">
+						<div class="question-header">
+							<a class="user fleft" href="#">
+								<img src="/uploads/{{question.author.avatar }}" alt="Responsive image" class="img-rounded">
+							</a>
+
+							<a  href="{% url 'polls:detail' question.id %}" class="question-title">{{question.question_title}}</a>
+							<p class="question-meta ">{{question.pub_date}} by <a href="#">{{question.author.username}}</a></p>
+								<span class="voting badge">
+									<a><span class="updatable count">{{question.rating}}</span></a>
+									<span role="button" class="glyphicon glyphicon-chevron-up"></span>
+									<span role="button" class="glyphicon glyphicon-chevron-down"><span class="control"></span></span>
+								</span>
+							<div class="tags pull-right"> 
+								{% for tag in question.tags.all %}
+								<span class="badge"><a href="{% url 'polls:tag' tag.name %}">{{tag}}</a></span>
+								{% endfor %}
+							</div>  
+						</div>
+						<div class="question-body clear">
+							<p class="question-text">{{question.question_text}}</p>
+						</div>
+					</div>
+
+					<div class="container">
+						<h3>Answers:</h3>
+					</div>
+
+					{% if question.answer_set.all %}
+
+					{% for answer in question.answer_set.all %}
+
+					<div class="comment">
+						<a class="user pull-left" href="#">
+							<img src="/uploads/{{answer.author.avatar }}" alt="Responsive image" class="img-rounded">
+						</a>
+
+						<div class="comment-body">
+							<a href="#" class="username">{{answer.author.username}}</a>
+							<a href="#" class="comment-meta">{{answer.pub_date}}</a>
+							<p class="comment-text">{{answer.answer_text}}</p>
+							<ul>
+								<li class="voting fleft">
+									<span class="badge">
+										<a><span class="updatable count">{{answer.rating}}</span></a>
+											<span role="button" class="glyphicon glyphicon-chevron-up"></span>
+										
+											<span role="button" class="glyphicon glyphicon-chevron-down"><span class="control"></span></span>
+									</span>
+								</li>
+								<li>
+								{% if user == question.author %}
+								
+									<span class="badge">
+										<label><input type="checkbox"> Is correct!</label>
+									</span>
+								
+								{% endif %}
+								</li>
+
+							</ul>
+						</div>
+					</div>
+					{% endfor %}
+
+					{% else %}
+						<p>No answers are available.</p>
+					{% endif %}
+
+
+					<hr>
+
+					{% if user.is_authenticated %}
+
+						{% include "polls/answer.html" %}
+
+					{% endif %}
+
+				</div>
+
+				{% include "polls/pop_tags.html" %}
+
+			</div>
+		</div>
+
+		{% include "polls/footer.html" %}
+	</body>
+</html>
