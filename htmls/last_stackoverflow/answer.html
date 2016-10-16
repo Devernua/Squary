@@ -1,0 +1,14 @@
+{% load staticfiles %}
+
+	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+	
+	<form role="form" action="{% url 'polls:answer' question.id %}" method="POST">  
+		{% csrf_token %}
+		
+		<div class="form-group">
+			{{ form }}
+			<!--<textarea rows="8" type="text" class="form-control" placeholder="Enter your answer here" class="form-control" > -->
+		</div>
+		<input type="submit" value="Answer" class="btn">
+		
+	</form>

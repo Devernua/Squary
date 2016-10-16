@@ -1,0 +1,57 @@
+{% load staticfiles %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html>
+	{% include "polls/head.html" %}
+
+	<body>
+		{% include "polls/hut.html" %}
+
+		<div class="container" role="main">
+			<div class="page-header">           
+					<h2>Log In</h2>  				
+			</div>	    
+
+			<div class="row">
+				<div class="col-xs-12 col-sm-8">
+
+					<form role="form-login" action="{%url 'polls:login'%}" method="post" class="form-short">
+					{% csrf_token %}
+
+							
+						
+						<div class="form-group">
+							{% for error in form.username.errors %}
+							<p class="text-danger">{{ error }}</p>
+							{% endfor %}
+							<!--<label class="control-label">Login:</label>-->
+							{{ form.username|attr:"class:form-control"|attr:"placeholder:username" }}
+							<!--<input type="login" class="form-control">-->
+						</div>
+						<div class="form-group">
+							{% for error in form.password.errors %}
+							<p class="text-danger">{{ error }}</p>
+							{% endfor %}
+							<!--<label class="control-label">Password:</label>-->
+							{{ form.password|attr:"class:form-control"|attr:"placeholder:password" }}
+							<!--<input type="password" class="form-control">-->
+						</div>                
+						<!--<div class="checkbox">
+							<label>
+								<input type="checkbox"> Remember me
+							</label>
+						</div> 
+						-->
+						<div class="form-group">
+							<input type="submit" value="Log In!" class="btn navbar-btn">
+							<!--<button type="button" class="btn navbar-btn">Log In!</button>-->
+						</div>
+					 
+					</form>
+				</div>   
+
+			</div>
+		</div>
+		{% include "polls/footer.html" %}
+	</body>
+</html>

@@ -1,0 +1,73 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+
+	{% include "polls/head.html" %}
+
+	<body>
+
+		{% include "polls/hut.html" %}
+		
+		<div class="container" role="main">
+			<div class="page-header">    
+				<h2>New questions  
+				<p><small><a href="{% url 'polls:hot' %}">Hot questions</a></small></p></h2>                 
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12 col-sm-8">
+
+				{% if latest_question_list %}
+
+					{% for question in latest_question_list %}
+					
+					<div class="que">
+						<a class="user fleft" href="#">
+							<img src= "/uploads/{{question.author.avatar }}" alt="Responsive image" class="img-rounded">
+							<!-- <img src="{% static 'img/questions.jpg' %}" alt="Responsive image" class="img-rounded"> -->
+						</a>
+						<a class="question-title" href="{% url 'polls:detail' question.id %}">{{ question.question_title }}</a>
+						<p class="question-meta ">{{question.pub_date}} by <a href="#">{{question.author.username}}</a></p>
+						<span class="voting badge">
+							<a><span class="updatable count">{{question.rating}}</span></a>
+								<span role="button" class="glyphicon glyphicon-chevron-up"></span>
+							
+								<span role="button" class="glyphicon glyphicon-chevron-down"><span class="control"></span></span>
+						</span>
+						<span class="badge"><a href="{% url 'polls:detail' question.id %}">{{question.answer_set.all.count}} answer{{question.answer_set.all.count|pluralize }}</a></span>
+
+						<div class="tags pull-right"> 
+							{% for tag in question.tags.all %}
+							<span class="badge"><a href="{% url 'polls:tag' tag.name %}">{{tag}}</a></span>
+							{% endfor %}
+						</div>
+					</div>
+
+					{% endfor %}
+
+				{% else %}
+					<p>No polls are available.</p>
+				{% endif %}
+
+					<ul class="pagination">
+						<li><a href="#">&laquo;</a></li>
+						<li><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">5</a></li>
+						<li><a href="#">&raquo;</a></li>
+					</ul>
+
+				</div>
+
+				{% include "polls/pop_tags.html" %}
+
+			</div>
+		</div>
+
+		{% include "polls/footer.html" %}
+
+	</body>
+</html>
