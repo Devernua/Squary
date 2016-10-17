@@ -1,10 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Settings</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/my.css">
 </head>
 <body>
+<nav class="navbar" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="home.html">Squary</a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-right">
+            <ul class="nav navbar-nav navbar-right center-block">
+                <li>
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                            <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                                            </span>
+                        </div>
+                    </form>
+
+                <li>
+                    <form action="create.html">
+                        <input value="Create" type="submit" class="btn btn-success navbar-btn">
+                    </form>
+                    <!--<button href="{%url 'polls:ask' %}" type="button" class="btn btn-success navbar-btn">Ask!</button>-->
+                </li>
+
+                <li>
+                    <img src="jpg/k7BF1vsXveY.jpg" alt="Responsive image" class="img-circle center-block">
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Devernua<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="settings.html">Settings</a></li>
+                        <li><a href="logout.html">Logout</a></li>
+                    </ul>
+                </li>
+
+
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div>
+</nav>
+
+<div class="container" role="main">
+    <div class="page-header">
+        <h2>My settings</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+
+            <form role="form" enctype="multipart/form-data" action="{%url 'polls:add_user'%}" method="POST" class="form-short">
+
+                <div class="form-group">
+                    <label class=" control-label">Change avatar:</label>
+                    <input class="input-file" id="fileInput" type="file">
+
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Change email:</label>
+                    <input type="email" class="form-control" value="dev@mail.ru">
+                </div>
+
+                <div class="form-group">
+                    <label class=" control-label">Change nickname:</label>
+                    <input type="nickname" class="form-control" value="Devernua">
+                </div>
+
+                <div class="form-group">
+                    <label class=" control-label">Change password:</label>
+                    <input type="password" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label class=" control-label">Repeat password:</label>
+                    <input type="password" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Canel" class="btn btn-default">
+                    <input type="submit" value="Save" class="btn btn-success">
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
 
 </body>
-</html>
