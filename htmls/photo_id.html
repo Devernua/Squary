@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home</title>
+    <title>photo_id</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -73,60 +73,94 @@
 
 <div class="container" role="main">
     <div class="page-header text-center">
-        <h2>Photo</h2>
+        <h2></h2>
     </div>
 
-    <div class="row news">
-        <div class="col-md-6 col-md-offset-3">
-
-            <div class="que">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 view">
+            <div class="col-md-7 question-body">
+                <img src="jpg/L187Wt6qbbc.jpg" class="photo">
+            </div>
+            <div class="col-md-5 view-inf">
                 <div class="question-header">
                     <a class="user fleft" href="user.html">
                         <img src= "jpg/k7BF1vsXveY.jpg" alt="Devernua" class="img-circle">
                     </a>
                     <a class="nickname" href="user.html">Devernua</a>
+
+                    <div><ul>
+                        <li><a href="#"><span role="button" class="like badge control">
+                            <span class="updatable count">10</span>
+                            <span  class="glyphicon glyphicon-heart"></span>
+                        </span></a></li>
+
+                        <li><span role="button" class="time badge">
+                            <span>2.05.16</span>
+                            <span class="glyphicon glyphicon-time"></span>
+                        </span></li>
+
+                        <li><a href="#"><span role="button" class="share badge">
+                            <span>Share</span>
+                            <span  class="glyphicon glyphicon-share"></span>
+                        </span></a></li>
+
+                        <li><a href="#" ><span role="button" class="subscribe badge">
+                            <span>Subscribe</span>
+                            <span class="glyphicon glyphicon-check"></span>
+                        </span></a></li>
+                    </ul></div>
                 </div>
 
-                <div class="question-body">
-                    <img src="jpg/L187Wt6qbbc.jpg" class="photo">
+                <div class="comment">
+                    <div class="comment-body">
+                        <a href="#" class="nickname">Sally</a>
+                        <span class="comment-text">wow</span>
+                        <span href="#" class="comment-meta">28.09.16</span>
+
+                    </div>
+
+                    <div class="comment-body">
+                        <a href="#" class="nickname">Cesar</a>
+                        <span class="comment-text">nice pic! oooh i love it soooooo much much much!!!!!!!</span>
+                        <span href="#" class="comment-meta">28.09.16</span>
+
+                    </div>
+
+                    <div class="comment-body">
+                        <a href="#" class="nickname">Devernua</a>
+                        <span class="comment-text">Thanks</span>
+                        <span href="#" class="comment-meta">28.09.16</span>
+
+                    </div>
+                    <div class="comment-body">
+                        <a href="#" class="nickname">Sally</a>
+                        <span class="comment-text">wow</span>
+                        <span href="#" class="comment-meta">28.09.16</span>
+
+                    </div>
+
+
+                    <div class="comment-body">
+                        <a href="#" class="nickname">Cesar</a>
+                        <span class="comment-text">nice pic! oooh i love it soooooo much much!!!!!!!nice nice nice nice nice nicenice nice nicenice nice nicenice nice nicenice nice nicenice nice nicenice nice nicenice nice nicenice nice nice very beatiful kitty, i want it</span>
+                        <span href="#" class="comment-meta">28.09.16</span>
+
+                    </div><div class="comment-body">
+                    <a href="#" class="nickname">Cesar</a>
+                    <span class="comment-text">nice pic! oooh i love it soooooo much much!!!!!!!nice nice nice nice nice nicenice nice nicenice nice nicenice nice nicenice nice nicenice nice nicenice nice nicenice nice nicenice nice nice very beatiful kitty, i want it</span>
+                    <span href="#" class="comment-meta">28.09.16</span>
+
                 </div>
-            </div>
 
-            <div class="que">
-                <div class="question-header">
-                    <a class="user fleft" href="user.html">
-                        <img src= "jpg/jSAKrlMWZpI.jpg" alt="Sally" class="img-circle">
-                    </a>
-                    <a class="nickname" href="user.html">Sally</a>
                 </div>
 
-                <div class="question-body">
-                    <img src="jpg/L51DJL8nn98.jpg" class="photo">
+                <div class="answer">
+                    <form role="form" action="answer" method="POST">
+                        <input type="text" class="form-control" placeholder="Input your comment">
+                    </form>
                 </div>
-            </div>
-
-            <div class="que">
-                <div class="question-header">
-                    <a class="user fleft" href="user.html">
-                        <img src= "jpg/1Q3y9tZGHC0.jpg" alt="eZchik" class="img-circle">
-                    </a>
-                    <a class="nickname" href="user.html">eZchik</a>
-                </div>
-
-                <div class="question-body">
-                    <img src="jpg/iP0_OBR67e8.jpg" class="photo">
-                </div>
-            </div>
-
-
-
-
-            <div class="text-center">
-                <button type="button" class="btn btn-default ">Загрузить еще</button>
             </div>
         </div>
-
-
     </div>
 </div>
 
