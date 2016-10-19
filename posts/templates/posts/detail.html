@@ -60,23 +60,23 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1 view">
             <div class="col-md-7 question-body">
-                <img src="/media/{{image.img}}" class="photo">
+                <img src="{{image.img.url}}" class="photo">
             </div>
             <div class="col-md-5 view-inf">
                 <div class="question-header">
                     <a class="user fleft" href="user.html">
-                        <img src= "/media/{{image.author.avatar}}" alt="Devernua" class="img-circle">
+                        <img src= "{{image.author.avatar.url}}" alt="Devernua" class="img-circle">
                     </a>
                     <a class="nickname" href="user.html">{{image.author.username}}</a>
 
                     <div><ul>
                         <li><a href="#"><span role="button" class="like badge control">
-                            <span class="updatable count">{{image.rating}}</span>
+                            <span class="updatable count">{{image.rating_set.all.count}}</span>
                             <span  class="glyphicon glyphicon-heart"></span>
                         </span></a></li>
 
                         <li><span role="button" class="time badge">
-                            <span>{{image.pdate}}</span>
+                            <span>{{image.pdate|date:"y.m.d"}}</span>
                             <span class="glyphicon glyphicon-time"></span>
                         </span></li>
 
@@ -91,13 +91,12 @@
                         </span></a></li>
                     </ul></div>
                 </div>
-		{% for comment in image.comment_set.all %}
                 <div class="comment">
+		{% for comment in image.comment_set.all %}
                     <div class="comment-body">
                         <a href="#" class="nickname">{{comment.author.username}}</a>
                         <span class="comment-text">{{comment.text}}</span>
                         <span href="#" class="comment-meta">{{comment.pdate}}</span>
-
                     </div>
 		{% endfor %}
                 </div>
