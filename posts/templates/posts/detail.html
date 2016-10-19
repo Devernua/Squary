@@ -1,0 +1,116 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+{% include "posts/head.html" %}
+<body>
+<nav class="navbar" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="home.html">Squary</a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-right">
+            <ul class="nav navbar-nav navbar-right center-block">
+                <li>
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                            <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                                        </span>
+                        </div>
+                    </form>
+                </li>
+
+                <li>
+                    <form action="create.html">
+                        <input value="Create" type="submit" class="btn btn-success navbar-btn">
+                    </form>
+                </li>
+
+                <li>
+                    <img src="jpg/k7BF1vsXveY.jpg" alt="Responsive image" class="img-circle center-block">
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Devernua<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="settings.html">Settings</a></li>
+                        <li><a href="logout.html">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div>
+</nav>
+
+
+<div class="container" role="main">
+    <div class="page-header text-center">
+        <h2></h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 view">
+            <div class="col-md-7 question-body">
+                <img src="/media/{{image.img}}" class="photo">
+            </div>
+            <div class="col-md-5 view-inf">
+                <div class="question-header">
+                    <a class="user fleft" href="user.html">
+                        <img src= "/media/{{image.author.avatar}}" alt="Devernua" class="img-circle">
+                    </a>
+                    <a class="nickname" href="user.html">{{image.author.username}}</a>
+
+                    <div><ul>
+                        <li><a href="#"><span role="button" class="like badge control">
+                            <span class="updatable count">{{image.rating}}</span>
+                            <span  class="glyphicon glyphicon-heart"></span>
+                        </span></a></li>
+
+                        <li><span role="button" class="time badge">
+                            <span>{{image.pdate}}</span>
+                            <span class="glyphicon glyphicon-time"></span>
+                        </span></li>
+
+                        <li><a href="#"><span role="button" class="share badge">
+                            <span>Share</span>
+                            <span  class="glyphicon glyphicon-share"></span>
+                        </span></a></li>
+
+                        <li><a href="#" ><span role="button" class="subscribe badge">
+                            <span>Subscribe</span>
+                            <span class="glyphicon glyphicon-check"></span>
+                        </span></a></li>
+                    </ul></div>
+                </div>
+		{% for comment in image.comment_set.all %}
+                <div class="comment">
+                    <div class="comment-body">
+                        <a href="#" class="nickname">{{comment.author.username}}</a>
+                        <span class="comment-text">{{comment.text}}</span>
+                        <span href="#" class="comment-meta">{{comment.pdate}}</span>
+
+                    </div>
+		{% endfor %}
+                </div>
+
+                <div class="answer">
+                    <form role="form" action="answer" method="POST">
+                        <input type="text" class="form-control" placeholder="Input your comment">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

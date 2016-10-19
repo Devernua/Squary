@@ -8,5 +8,5 @@ sudo ln -sf $PWD/etc/nginx.conf /etc/nginx/conf.d/squary.conf
 sudo nginx
 
 
-#gunicorn web_app.wsgi:application -c etc/gunicorn.conf 
+gunicorn web_app.wsgi:application -c etc/gunicorn.conf 
 
