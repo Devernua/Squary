@@ -33,10 +33,16 @@ span > a{
 	.navbar a{
 		color: #eee;
 	}
-	.navbar-nav >li > img.img-circle{
+
+	.navbar-nav > li > a.userpic{
+		padding: 0;
+	}
+
+	.navbar-nav >li > a.userpic img.img-circle{
 		margin: 5px 0px;
 
 	}
+
 	.navbar-nav > li > a:hover,
 	.navbar-nav > li > a:focus{
 		color: #5cb85c;
@@ -94,10 +100,10 @@ input[type="file"] {
 
 input[type=checkbox]{
 	margin: 0px;
-} 
+}
 .badge label{
 	margin: 0px;
-	padding: 1px; 
+	padding: 1px;
 }
 
 .user img{
@@ -107,6 +113,14 @@ input[type=checkbox]{
 .user a.subscribe{
 	display: block;
 	font-size: 15px;
+}
+
+div.photos{
+	padding: 10px;
+}
+
+.photos div.ph{
+	padding: 10px;
 }
 
 .photos div.ph:hover {
@@ -122,7 +136,6 @@ input[type=checkbox]{
 
 .photos a img.photo{
 	max-height: 500px;
-	padding-bottom: 15px;
 }
 
 .photos div.col-md-4{
@@ -199,6 +212,10 @@ a.to-comment{
 	border-radius: 6px;
 	position: relative;
 }
+
+.view-inf{
+	padding: 0;
+}
 	.post-header {
 		position: relative;
 		background-color: #fff;
@@ -256,7 +273,7 @@ a.to-comment{
 */
 
 span.badge{
-	margin: 1em;
+	margin-bottom: 0.5em;
 }
 
 span.like.badge{

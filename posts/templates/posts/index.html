@@ -5,19 +5,19 @@
 	{% include "posts/hut.html" %}
 
     <div class="container" role="main">
-        <div class="row news">
+        <div class="row feed">
             <div class="col-md-6 col-md-offset-3">
 	{% if latest_image_list %}
 		{% for image in latest_image_list %}	
-                <div class="que">
-                    <div class="question-header">
+                <div class="feed-post">
+                    <div class="post-header">
                         <a class="user fleft" href="user.html">
                             <img src="{{image.author.avatar.url}}" alt="Devernua" class="img-circle">
                         </a>
-                        <a class="nickname" href="user.html">{{image.author.username}}</a>
+                        <a class="nickname" href="user.html">{{ image.author.username }}</a>
                     </div>
 
-                    <div class="question-body">
+                    <div class="post-body">
                         <img src="{{image.img.url}}" class="photo">
 
                         <a class="to-like" href="#">
@@ -28,7 +28,7 @@
                             <span  class="glyphicon glyphicon-comment"></span>
                         </a>
                     </div>
-                </div/>
+                </div>
 
 		{% endfor %}
 	{% else %}
