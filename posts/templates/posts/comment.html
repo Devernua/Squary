@@ -1,0 +1,12 @@
+{% load staticfiles %}
+
+
+
+	<form role="form" action="{% url 'posts:comment' image.id %}" method="POST">
+		{% csrf_token %}
+
+		<div class="form-group">
+			{{ form.text }}
+		</div>
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+	</form>

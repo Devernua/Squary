@@ -1,0 +1,46 @@
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% include "posts/head.html" %}
+<body>
+	{% include "posts/hut.html" %}
+    <div class="container" role="main">
+        <div class="page-header">
+            <h2>Log In</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+
+                <form role="form-login" action="{%url 'posts:login'%}" method="post" class="form-short">
+                {% csrf_token %}
+
+                    <div class="form-group">
+                        {% for error in form.username.errors %}
+							<p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+
+                        {{ form.username|attr:"class:form-control"|attr:"placeholder:username" }}
+                        <!--<label class="control-label">Login:</label>
+                        <input type="login" class="form-control">-->
+                    </div>
+                    <div class="form-group">
+                        {% for error in form.password.errors %}
+							<p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+
+                        {{ form.password|attr:"class:form-control"|attr:"placeholder:password" }}
+                        <!--<label class="control-label">Password:</label>
+                        <input type="password" class="form-control">-->
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Login" class="btn btn-success">
+                        <!--<button type="button" class="btn navbar-btn">Log In!</button>-->
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</body>
