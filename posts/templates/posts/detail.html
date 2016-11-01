@@ -23,10 +23,19 @@
                         <a class="nickname" href="user.html">{{image.author.username}}</a>
                     </div>
                     <div class="post-menu"><ul>
-                        <li><a href="#"><span role="button" class="like badge control">
-                            <span class="updatable count">{{image.rating_set.all.count}}</span>
-                            <span  class="glyphicon glyphicon-heart"></span>
-                        </span></a></li>
+                        <li>
+                            <form action="{% url 'posts:rating' image.id %}" method="POST">
+                                {% csrf_token %}
+                            <button class="likes" value="like" type="submit">
+                                <span role="button" class="like badge control">
+                                    <span class="updatable count">{{image.rating_set.all.count}}</span>
+                                     <span  class="glyphicon glyphicon-heart"></span>
+                                </span>
+                            </button>
+                            </form>
+
+
+                        </li>
 
                         <li><span role="button" class="time badge">
                             <span>{{image.pdate|date:"y.m.d"}}</span>

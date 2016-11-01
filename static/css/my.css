@@ -128,7 +128,7 @@ div.photos{
 	opacity: 0.7;
 }
 
-.photos div.ph:hover a.to-like,
+.photos div.ph:hover button.to-like,
 .photos div.ph:hover a.to-comment{
 	transition:.5s ease-out;
 	display: block;
@@ -141,13 +141,16 @@ div.photos{
 .photos div.col-md-4{
 	position: relative;
 }
-a.to-like{
+button.to-like{
 	color: #d9534f;
 	font-size: 40px;
 	position: absolute;
 	top:20%;
 	left:30%;
 	display: none;
+	border: none;
+    background: none;
+    padding: 0;
 }
 
 a.to-comment{
@@ -185,7 +188,7 @@ a.to-comment{
 		opacity: 0.7;
 	}
 
-	.feed-post .post-body:hover a.to-like,
+	.feed-post .post-body:hover button.to-like,
 	.feed-post .post-body:hover a.to-comment{
 		transition:.5s ease-out;
 		display: block;
@@ -271,6 +274,12 @@ a.to-comment{
 	margin-left: 5px;
 }
 */
+
+button.likes{
+	border: none;
+    background: none;
+    padding: 0;
+}
 
 span.badge{
 	margin-bottom: 0.5em;

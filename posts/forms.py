@@ -1,6 +1,9 @@
 from django import forms
 from .models import User
 
+class ImageForm(forms.Form):
+	img = forms.ImageField(required=True)
+
 class CommentForm(forms.Form):
 	text = forms.CharField(widget=forms.TextInput(attrs={'class' : 'form-control'}))
 
@@ -9,7 +12,7 @@ class RegistrationForm(forms.Form):
 	password1 	= forms.CharField(label=u'password', widget=forms.PasswordInput(attrs={'class' : 'form-control'}))
 	password2 	= forms.CharField(label=u'again', widget=forms.PasswordInput(attrs={'class' : 'form-control'}))
 	email 		= forms.EmailField(max_length = 200, widget=forms.TextInput(attrs={'class' : 'form-control'}))
-	avatar 		= forms.ImageField(required=False)
+	avatar 		= forms.ImageField(required=True)
 
 	def clean_username(self):
 		username = self.cleaned_data['username']
