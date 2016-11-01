@@ -75,7 +75,7 @@ input[type="file"] {
 }
 
 
-.que{
+.feed-post {
 	border: 1px #EEE solid;
 	border-radius: 6px;
 	padding:5px 10px 5px 10px; 
@@ -83,7 +83,7 @@ input[type="file"] {
 	margin-bottom: 5px;
 	background-color: #EEE;
 }
-	.que .user{
+	.feed-post .user{
 				margin-right: 15px;
 			    width: 60px;
 			    height: 60px;	
@@ -101,7 +101,7 @@ input[type="file"] {
 		background-color: #EEE;
 		min-height: 90px;
 	}
-	a.question-title {
+	a.post-title {
 		font-size: 20px;
 	}
 		.question-header a.user{
@@ -109,7 +109,7 @@ input[type="file"] {
 		    width: 80px;
 		    height: 80px;
 		}
-		.question-meta{
+		.post-meta {
 			font-size: 12px;
 			color: #777;
 		}
