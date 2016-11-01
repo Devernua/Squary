@@ -1,4 +1,4 @@
 *.pyc
 *.[ao]
 db.*
-
+/htmls/node_modules/*
