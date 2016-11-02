@@ -3,6 +3,7 @@ from .models import User
 
 class ImageForm(forms.Form):
 	img = forms.ImageField(required=True)
+	name = forms.CharField(widget=forms.TextInput(attrs={'class' : 'form-control'}))
 
 class CommentForm(forms.Form):
 	text = forms.CharField(widget=forms.TextInput(attrs={'class' : 'form-control'}))

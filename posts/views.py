@@ -91,7 +91,7 @@ def add_image(request):
 			img = Image(img = form.cleaned_data['img'])
 			img.author = request.user
 			img.pdate = timezone.now()
-			img.name = ""
+			img.name = form.cleaned_data['name']
 			img.save()
 			return HttpResponseRedirect(reverse('posts:index') )
 	return render(request, 'posts/create.html', {
@@ -113,6 +113,13 @@ def add_comment(request, image_id):
 		'error_message': "You didn't enter comment.",
 		'form':form,
 })
+
+def do_search(request):
+	text = request.GET.get('q', '')
+	latest_image_list = Image.objects.filter(name__startswith=text).order_by('-pdate')[:5]
+	context = {'latest_image_list': latest_image_list}
+	return render(request, 'posts/index.html', context)
+
 
 def add_rating(request, image_id):
 	p = get_object_or_404(Image, pk = image_id)
