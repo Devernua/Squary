@@ -1,0 +1,49 @@
+{% load staticfiles %}
+
+{% include "posts/head.html" %}
+<body>
+{% include "posts/hut.html" %}
+
+<div class="container" role="main">
+    <div class="page-header text-center">
+        <h2></h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 view">
+
+            <div class="col-md-5 view-inf">
+
+
+
+
+                {% for img in user.image_set.all %}
+                <div class="feed-post">
+                    <div class="post-header">
+                        <a class="user fleft" href="{% url 'posts:index_user' img.author.id %}">
+                            <img src="{{img.author.avatar.url}}" alt="Devernua" class="img-circle">
+                        </a>
+                        <a class="nickname" href="user.html">{{ img.author.username }}</a>
+                    </div>
+
+                    <div class="post-body">
+                        <img src="{{img.img.url}}" class="photo">
+                        <form action="{% url 'posts:rating' img.id %}" method="POST">
+                            {% csrf_token %}
+                            <button class="to-like">
+                                <span  class="glyphicon glyphicon-heart"></span>
+                            </button>
+                        </form>
+                        <a class="to-comment" href="{% url 'posts:detail' img.id %}">
+                            <span  class="glyphicon glyphicon-comment"></span>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

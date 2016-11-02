@@ -7,6 +7,9 @@ class ImageForm(forms.Form):
 class CommentForm(forms.Form):
 	text = forms.CharField(widget=forms.TextInput(attrs={'class' : 'form-control'}))
 
+class UpdateUserForm(forms.Form):
+	avatar = forms.ImageField(required=True)
+
 class RegistrationForm(forms.Form):
 	username 	= forms.CharField(max_length = 200, widget=forms.TextInput(attrs={'class' : 'form-control'}))
 	password1 	= forms.CharField(label=u'password', widget=forms.PasswordInput(attrs={'class' : 'form-control'}))

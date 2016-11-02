@@ -16,11 +16,11 @@
             </div>
             <div class="col-md-5 view-inf">
                 <div class="post-header">
-                    <a class="user fleft" href="user.html">
+                    <a class="user fleft" href="{% url 'posts:index_user' image.author.id %}">
                         <img src= "{{image.author.avatar.url}}" alt="Devernua" class="img-circle">
                     </a>
                     <div>
-                        <a class="nickname" href="user.html">{{image.author.username}}</a>
+                        <a class="nickname" href="{% url 'posts:index_user' image.author.id %}">{{image.author.username}}</a>
                     </div>
                     <div class="post-menu"><ul>
                         <li>

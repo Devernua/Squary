@@ -24,6 +24,10 @@ class IndexView(generic.ListView):
 	def get_queryset(self):
 		return Image.objects.order_by('-pdate')[:5]
 
+class UserIndexView(generic.DetailView):
+	model = User
+	template_name = 'posts/user.html'
+
 class DetailView(generic.DetailView):
 	model = Image
 	template_name = 'posts/detail.html'
@@ -42,6 +46,21 @@ class RegisterFormView(FormView):
 	form_class = forms.RegistrationForm
 	success_url = "posts/login/"
 	template_name = "posts/signup.html"
+
+def update_user(request):
+	form = forms.UpdateUserForm()
+	if request.method == 'POST':
+		form = forms.UpdateUserForm(request.POST, request.FILES)
+		if form.is_valid():
+			cd = form.cleaned_data
+			u = User.objects.get(id=request.user.id)
+			u.avatar = cd['avatar']
+			u.save()
+			return HttpResponseRedirect(reverse('posts:index'))
+		return render(request, 'posts/settings.html', {
+			'error_message': "Sorry",
+			'form': form,
+		})
 
 def add_user(request):
 	form = forms.RegistrationForm()
@@ -110,8 +129,7 @@ def add_rating(request, image_id):
 		'image': p,
 	})
 
-class UserUpdate(UpdateView):
-    form_class = forms.RegistrationForm
-    model = User
-    template_name = 'singup.html'
-    success_url = '/user/edit/success/'
+class UpdateUserFormView(FormView):
+	form_class = forms.UpdateUserForm
+	success_url = "edit/result/"
+	template_name = "posts/settings.html"
