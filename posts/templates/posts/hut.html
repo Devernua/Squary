@@ -16,12 +16,12 @@
             <div class="collapse navbar-collapse navbar-right">
                 <ul class="nav navbar-nav navbar-right center-block">
                     <li>
-                        <form class="navbar-form navbar-left" role="search">
+                        <form class="navbar-form navbar-left" role="search" action="{% url 'posts:search' %}" method="get" accept-charset="utf-8">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search">
+                                <input type="text" name="q" class="form-control" placeholder="Search">
                                 <span class="input-group-btn">
-                                            <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-                                        </span>
+                                    <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                                </span>
                             </div>
                         </form>
                     </li>

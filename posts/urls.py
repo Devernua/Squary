@@ -18,5 +18,6 @@ urlpatterns = [
 	url(r'^post/create/result/$', views.add_image, name='add_image'),
 	url(r'^edit/$', login_required(views.UpdateUserFormView.as_view()), name='settings'),
 	url(r'^edit/result/$', login_required(views.update_user), name='user_edit'),
+	url(r'^post/search/$', views.do_search, name='search'),
 
 ]
