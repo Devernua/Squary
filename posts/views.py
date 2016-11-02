@@ -5,6 +5,8 @@ from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.views import generic
+
+from django.views.generic.edit import UpdateView
 from django.core.urlresolvers import reverse
 from django.core.mail import send_mail
 
@@ -12,7 +14,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 
 from django.views.generic.edit import FormView
 from django.contrib.auth.forms import UserCreationForm
-from .models import User, Image, Comment
+from .models import User, Image, Comment, Rating
 from . import forms
 
 class IndexView(generic.ListView):
@@ -21,6 +23,10 @@ class IndexView(generic.ListView):
 
 	def get_queryset(self):
 		return Image.objects.order_by('-pdate')[:5]
+
+class UserIndexView(generic.DetailView):
+	model = User
+	template_name = 'posts/user.html'
 
 class DetailView(generic.DetailView):
 	model = Image
@@ -31,18 +37,39 @@ class DetailView(generic.DetailView):
 		context['form'] = forms.CommentForm()
 		return context
 
+class CreateImage(FormView):
+	template_name = 'posts/create.html'
+	form_class = forms.ImageForm
+	success_url = 'posts/create/result'
+
 class RegisterFormView(FormView):
 	form_class = forms.RegistrationForm
 	success_url = "posts/login/"
 	template_name = "posts/signup.html"
 
+def update_user(request):
+	form = forms.UpdateUserForm()
+	if request.method == 'POST':
+		form = forms.UpdateUserForm(request.POST, request.FILES)
+		if form.is_valid():
+			cd = form.cleaned_data
+			u = User.objects.get(id=request.user.id)
+			u.avatar = cd['avatar']
+			u.save()
+			return HttpResponseRedirect(reverse('posts:index'))
+		return render(request, 'posts/settings.html', {
+			'error_message': "Sorry",
+			'form': form,
+		})
+
 def add_user(request):
+	form = forms.RegistrationForm()
 	if request.method == 'POST':
 		form = forms.RegistrationForm(request.POST, request.FILES)
 		if form.is_valid():
 			cd = form.cleaned_data
 			u = User.objects.create_user(
-				username = cd['username'],
+				username 	= cd['username'],
 				email 		= cd['email'],
 				password 	= cd['password1'],
 				avatar		= cd['avatar'],
@@ -53,8 +80,24 @@ def add_user(request):
 			return HttpResponseRedirect(reverse('posts:login') )
 	return render(request, 'posts/signup.html', {
 		'error_message': "Sorry",
-		'form' :form,
+		'form' : form,
 	})
+
+def add_image(request):
+	form = forms.ImageForm()
+	if request.method == "POST":
+		form = forms.ImageForm(request.POST, request.FILES)
+		if form.is_valid():
+			img = Image(img = form.cleaned_data['img'])
+			img.author = request.user
+			img.pdate = timezone.now()
+			img.name = ""
+			img.save()
+			return HttpResponseRedirect(reverse('posts:index') )
+	return render(request, 'posts/create.html', {
+		'error_message': "You didn't enter image.",
+		'form':form,
+		})
 
 def add_comment(request, image_id):
 	p = get_object_or_404(Image, pk = image_id)
@@ -70,3 +113,23 @@ def add_comment(request, image_id):
 		'error_message': "You didn't enter comment.",
 		'form':form,
 })
+
+def add_rating(request, image_id):
+	p = get_object_or_404(Image, pk = image_id)
+	if request.method == "POST":
+		try:
+			rt = Rating.objects.get(user = request.user, img=p)
+			rt.delete();
+		except Rating.DoesNotExist:
+			rt = Rating(img=p)
+			rt.user = request.user
+			rt.save()
+			return HttpResponseRedirect(reverse('posts:detail', args=(p.id,)))
+	return render(request, 'posts/detail.html', {
+		'image': p,
+	})
+
+class UpdateUserFormView(FormView):
+	form_class = forms.UpdateUserForm
+	success_url = "edit/result/"
+	template_name = "posts/settings.html"

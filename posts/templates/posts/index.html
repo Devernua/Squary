@@ -11,19 +11,20 @@
 		{% for image in latest_image_list %}	
                 <div class="feed-post">
                     <div class="post-header">
-                        <a class="user fleft" href="user.html">
+                        <a class="user fleft" href="{% url 'posts:index_user' image.author.id %}">
                             <img src="{{image.author.avatar.url}}" alt="Devernua" class="img-circle">
                         </a>
-                        <a class="nickname" href="user.html">{{ image.author.username }}</a>
+                        <a class="nickname" href="{% url 'posts:index_user' image.author.id %}">{{ image.author.username }}</a>
                     </div>
 
                     <div class="post-body">
                         <img src="{{image.img.url}}" class="photo">
-
-                        <a class="to-like" href="#">
-                            <span  class="glyphicon glyphicon-heart"></span>
-                        </a>
-
+                        <form action="{% url 'posts:rating' image.id %}" method="POST">
+                            {% csrf_token %}
+                            <button class="to-like">
+                                <span  class="glyphicon glyphicon-heart"></span>
+                            </button>
+                        </form>
                         <a class="to-comment" href="{% url 'posts:detail' image.id %}">
                             <span  class="glyphicon glyphicon-comment"></span>
                         </a>

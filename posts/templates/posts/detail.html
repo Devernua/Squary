@@ -16,17 +16,26 @@
             </div>
             <div class="col-md-5 view-inf">
                 <div class="post-header">
-                    <a class="user fleft" href="user.html">
+                    <a class="user fleft" href="{% url 'posts:index_user' image.author.id %}">
                         <img src= "{{image.author.avatar.url}}" alt="Devernua" class="img-circle">
                     </a>
                     <div>
-                        <a class="nickname" href="user.html">{{image.author.username}}</a>
+                        <a class="nickname" href="{% url 'posts:index_user' image.author.id %}">{{image.author.username}}</a>
                     </div>
                     <div class="post-menu"><ul>
-                        <li><a href="#"><span role="button" class="like badge control">
-                            <span class="updatable count">{{image.rating_set.all.count}}</span>
-                            <span  class="glyphicon glyphicon-heart"></span>
-                        </span></a></li>
+                        <li>
+                            <form action="{% url 'posts:rating' image.id %}" method="POST">
+                                {% csrf_token %}
+                            <button class="likes" value="like" type="submit">
+                                <span role="button" class="like badge control">
+                                    <span class="updatable count">{{image.rating_set.all.count}}</span>
+                                     <span  class="glyphicon glyphicon-heart"></span>
+                                </span>
+                            </button>
+                            </form>
+
+
+                        </li>
 
                         <li><span role="button" class="time badge">
                             <span>{{image.pdate|date:"y.m.d"}}</span>
