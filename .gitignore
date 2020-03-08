@@ -3,4 +3,4 @@
 db.*
 /htmls/node_modules/*
 .DS_Store
-.idea*
+.idea/
